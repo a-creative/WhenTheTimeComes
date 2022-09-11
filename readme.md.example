@@ -1,0 +1,50 @@
+TODO
+
+- Kør: docker-compose exec backend php artisan key:generate
+
+- I backend:
+    - Kør: docker-compose exec backend bash
+    - og:
+chown -R www-data:www-data storage;
+chown -R www-data:www-data bootstrap/cache;
+chmod -R 775 storage;
+chmod -R 775 bootstrap/cache;
+
+- Add TODO.md
+- Opret dedikeret repo på Github
+- Kør:
+rm -rf .git
+git init
+git add --all
+git commit -m "init"
+git branch -M main
+git remote add origin REPO_URL
+git push -u origin main
+
+- Tilret /home/maya/GoogleDrive/nytliv/init_dockers.sh med
+    cd /home/maya/Udvikling/Docker/[folde_name]/ #[ports used]
+    docker-compose up -d
+- Tilføj /home/maya/GoogleDrive/nytliv/backup.php
+    [
+        "type"              => 'docker-compose',
+        "name"              => 'APP-NAME',
+        "compose_dir"       => '/home/maya/Udvikling/Docker/APP_DIR',
+        "alt_compose_file"  => false,
+        "database_name"     => 'laravel',
+    ]
+
+- Opret migration + model + controller:
+eks. "php artisan make:model Flight -mc"
+
+- Tilret migration
+    - Se: https://laravel.com/docs/8.x/migrations#creating-columns
+    - Tilret backend/src/database/migrations/create_flights_table...
+
+- Opret database
+eks. "php artisan migrate"
+
+- Model
+    - Tilret evt. basics til en model via https://laravel.com/docs/8.x/eloquent
+
+- Controller
+    - Tilret via https://laravel.com/docs/8.x/controllers

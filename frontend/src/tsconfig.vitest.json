@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.app.json",
+  "exclude": [],
+  "compilerOptions": {
+    "composite": true,
+    "lib": [],
+    "types": ["node", "jsdom"],
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitThis" : true,
+    "noImplicitAny" : true,
+    "strictNullChecks" : true,
+    "alwaysStrict" : true,
+  }
+}
