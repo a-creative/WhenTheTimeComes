@@ -2,10 +2,10 @@
     import { RouteLocation, useRouter } from 'vue-router'
     import { useI18n } from "vue-i18n";
     import { ref } from "vue";
-    import PageContainer from "@/components/PageContainer.vue";
+    import PageContainer from "@/@acreative/vue/bootstrap/PageContainer.vue";
     
-    import FormO from '@/components/Form.vue';
-    import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/modules/@acreative/vue-form"
+    import FormO from '@/@acreative/vue/bootstrap/Form.vue';
+    import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/@acreative/vue/modules/vue-form"
 
     import { userStore } from '@/stores/userStore';
 

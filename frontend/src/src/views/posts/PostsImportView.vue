@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import PageT from "@/components/PageContainer.vue"
-import FormO from '@/components/Form.vue';
+import PageT from "@/@acreative/vue/bootstrap/PageContainer.vue"
+import FormO from '@/@acreative/vue/bootstrap/Form.vue';
 import { ref, onMounted } from 'vue';
 import { useI18n } from "vue-i18n";
 import { postStore } from "@/stores/postStore";
 import { useRouter } from 'vue-router'
-import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/modules/@acreative/vue-form"
+import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/@acreative/vue/modules/vue-form"
 const { t } = useI18n({ inheritLocale: true });
 const router = useRouter();
 const pStore = postStore();

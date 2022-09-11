@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-  import TableO from "@/components/Table.vue";
-  import PageT from "@/components/PageContainer.vue"
+  import TableO from "@/@acreative/vue/bootstrap/Table.vue";
+  import PageT from "@/@acreative/vue/bootstrap/PageContainer.vue"
   import { ref } from 'vue';
   import { ColumnDef} from '@tanstack/vue-table'
   import { useI18n } from "vue-i18n";

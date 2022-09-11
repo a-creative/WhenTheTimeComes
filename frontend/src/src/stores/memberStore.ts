@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { api, EApiMethod, IApiPostOptions, IApiPutOptions } from "@/modules/@acreative/vue-api"
+import { api, EApiMethod, IApiPostOptions, IApiPutOptions } from "@/@acreative/vue/modules/vue-api"
 
 export const memberStore = defineStore('member', {
     state () {

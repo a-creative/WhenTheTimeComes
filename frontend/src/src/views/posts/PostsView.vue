@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { useI18n } from "vue-i18n";
-  import SubMenu from "@/components/SubMenu.vue"
+  import SubMenu from "@/@acreative/vue/bootstrap/SubMenu.vue"
   const { t } = useI18n({ inheritLocale: true });
 
   const subMenuRouteTargets:SubMenuRouteTarget[] = [

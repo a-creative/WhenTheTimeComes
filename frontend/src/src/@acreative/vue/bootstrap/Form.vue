@@ -11,7 +11,7 @@
         ActionLocation,
         ActionType,
         EFieldType
-    } from "@/modules/@acreative/vue-form"
+    } from "@/@acreative/vue/modules/vue-form"
 import router from "@/router/routes";
 
     const { t } = useI18n({ inheritLocale: true });

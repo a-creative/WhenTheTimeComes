@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import PageT from "@/components/PageContainer.vue"
-import FormO from "@/components/Form.vue"
-import { FieldDef, FieldType } from '@/modules/@acreative/vue-form'
+import PageT from "@/@acreative/vue/bootstrap/PageContainer.vue"
+import FormO from '@/@acreative/vue/bootstrap/Form.vue';
+import { FieldDef, FieldType } from '@/@acreative/vue/modules/vue-form'
 
 import { useI18n } from "vue-i18n";
 import { onMounted, ref } from 'vue';

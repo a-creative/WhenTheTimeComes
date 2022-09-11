@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router'
 import { useI18n } from "vue-i18n";
-import { api, EApiMethod, IApiPostOptions, IApiPutOptions } from "@/modules/@acreative/vue-api"
+import { api, EApiMethod, IApiPostOptions, IApiPutOptions } from "@/@acreative/vue/modules/vue-api"
 
 import {
     getCoreRowModel,

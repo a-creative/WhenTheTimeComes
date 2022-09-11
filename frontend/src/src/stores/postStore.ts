@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { api } from '@/modules/@acreative/vue-api';
+import { api } from '@/@acreative/vue/modules/vue-api';
 
 export const postStore = defineStore('post', {
     state () {
