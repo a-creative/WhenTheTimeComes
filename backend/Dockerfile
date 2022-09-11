@@ -39,4 +39,4 @@ RUN chmod -R 775 bootstrap/cache;
 RUN chmod +x dev-run.sh
 RUN chmod +x wait-for-it.sh
 EXPOSE 80  
-#ENTRYPOINT ["/var/www/html/dev-run.sh"]
+ENTRYPOINT ["/var/www/html/dev-run.sh"]
