@@ -1,0 +1,55 @@
+version: "3.8"
+services:
+  frontend:
+    stdin_open: true
+    image: node:lts
+    working_dir: /root
+    command: bash -c "npm install && npm run dev"
+    ports:
+      - '9001:3000'
+    volumes:
+      - ./frontend/src/:/root
+    tty: true
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  backend:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./backend
+      args:
+        USER_ID: 1001
+        GROUP_ID: 1002
+    ports:
+      - "9002:80"
+    volumes:
+      - ./backend/src:/var/www/html
+    read_only: false
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_NAME: laravel
+      DB_USER: root
+      DB_PASS: root_password
+  phpmyadmin:
+    image: phpmyadmin:5.0.2-apache
+    restart: always
+    ports:
+      - 9003:80
+    depends_on:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+  database:
+    image: mariadb:10.5.5-focal
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: laravel
+    volumes:
+      - ./database/data:/var/lib/mysql

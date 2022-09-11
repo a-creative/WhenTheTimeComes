@@ -1,5 +1,16 @@
 TODO
 
+- docker-compose.yml
+    - Tilret portnumrene 9001, 9002, 9003
+
+- frontend/src/vite.config.ts
+    - Tilret portnummeret 9002
+
+# Vær obs på om composer install bliver kørt
+
+- Kør: docker-compose up -d
+- Kør: docker-compose exec backend composer install
+- Kør: docker-compose exec backend cp .env.example .env
 - Kør: docker-compose exec backend php artisan key:generate
 
 - I backend:
