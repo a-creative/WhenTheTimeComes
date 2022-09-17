@@ -1,5 +1,6 @@
 <?php
 
+use App\ItemType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,10 @@ class CreateExpItemTypesTable extends Migration
     {
         Schema::create('exp_item_types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->smallInteger('priority');
+            $table->boolean('income_essential');
+            $table->unique(['priority','income_essential']);
+            $table->foreignIdFor(ItemType::class);
         });
     }
 

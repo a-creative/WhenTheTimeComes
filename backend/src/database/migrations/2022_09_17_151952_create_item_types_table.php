@@ -15,7 +15,7 @@ class CreateItemTypesTable extends Migration
     {
         Schema::create('item_types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 150);
         });
     }
 
