@@ -16,10 +16,10 @@ class CreateExpItemTypesTable extends Migration
     {
         Schema::create('exp_item_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name',150);
             $table->smallInteger('priority');
             $table->boolean('income_essential');
             $table->unique(['priority','income_essential']);
-            $table->foreignIdFor(ItemType::class);
         });
     }
 

@@ -16,8 +16,8 @@ class CreateIncomeItemTypesTable extends Migration
     {
         Schema::create('income_item_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name',150);
             $table->smallInteger('priority')->unique();
-            $table->foreignIdFor(ItemType::class);
         });
     }
 
