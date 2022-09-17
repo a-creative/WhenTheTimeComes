@@ -9,7 +9,7 @@ import { useI18n } from "vue-i18n";
 const store = userStore();
 const { t } = useI18n({ inheritLocale: true });
 
-const appTitle = ref<string>('Post mom');
+const appTitle = ref<string>(t('title'));
 
 function isLoginPage() {
   const router = useRouter();
@@ -71,25 +71,18 @@ const getMainRoutes = () => {
 
 <i18n lang="json">{
   "da": {
+    "title" : "mitBudget",
     "Login": "Log ind",
     "Log ud": "Log ud",
     "route": {
       "title": {
-        "tagCategories": "Emnekategorier",
-        "tags": "Emner",
-        "members": "Medlemmer",
-        "posts" : "Indlæg"
       }
     }
   },
   "en": {
+    "title" : "myBudget",
     "route": {
       "title": {
-        "tagCategories": "Tag categories",
-        "tags": "Tags",
-        "members": "Members",
-
-        "posts" : "Posts"
       }
     }
   }

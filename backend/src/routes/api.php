@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MemberUpdatePostItemController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\TagCategoryController;
-use App\Http\Controllers\TagController;
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
@@ -28,14 +24,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware(['auth:web'])->group(function () {
-    Route::resource('tags', TagController::class);
-    Route::resource('tagCategories', TagCategoryController::class);
 
-    Route::get('/memberUpdatePostItems/getPostContent', [MemberUpdatePostItemController::class, 'getPostContent']);
-    Route::delete('/memberUpdatePostItems/confirmUpdateSent',  [MemberUpdatePostItemController::class, 'confirmUpdateSent']);
-    Route::resource('memberUpdatePostItems', MemberUpdatePostItemController::class);
-
-    Route::post('/posts/import', [PostController::class, 'import' ] );
 });
 
 
