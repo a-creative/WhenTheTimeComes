@@ -3,3 +3,5 @@ docker-compose.yml
 .directory
 TODO.md
 /tsconfig.json
+*.ods
+*.odt
