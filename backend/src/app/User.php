@@ -10,5 +10,12 @@ use Illuminate\Contracts\Auth\Authenticatable as IAuthenticatable ;
 class User extends Model implements IAuthenticatable
 {
     use HasFactory, TAuthenticatable;
-    public $timestamps = false;
+    public $timestamps = true;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name','username','password'];
 }

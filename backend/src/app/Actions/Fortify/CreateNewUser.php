@@ -33,8 +33,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        error_log('test');
-
         return User::create([
             'name' => $input['name'],
             'username' => $input['username'],
