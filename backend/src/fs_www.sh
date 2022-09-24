@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-sudo chown www-data:www-data -R storage
-sudo chown www-data:www-data -R bootstrap
+sudo chown http:http -R storage
+sudo chown http:http -R bootstrap
