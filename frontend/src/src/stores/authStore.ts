@@ -1,32 +1,20 @@
 import { defineStore } from 'pinia'
 import { api } from '@/@acreative/vue/modules/vue-api';
 
-export const userStore = defineStore('user', {
+export const getAuthStore = defineStore('auth', {
     state () {
       return {
+        test : <string>'tom',
         user : <User|null>{},
-        unsuccessfullyAccessedRoute: <string|null>'',
-        loading: <ELoading>{},
-        errors: <any>[]
+        unsuccessfullyAccessedRoute: <string|null>''
       }
     },
     actions: {
         setUser ( user: User|null ) { 
-            this.user = user; 
+          this.user = user;
         },
         setUnsuccessfullyAccessedRoute ( unsuccessfullyAccessedRoute: string | null ) { 
             this.unsuccessfullyAccessedRoute = unsuccessfullyAccessedRoute; 
-        },
-        setLoading ( loadingState: ELoading ) {
-            this.loading = loadingState;
-        },
-        showError( error:any ) {
-            this.errors.push(error);
-        },
-        removeError( removeI:number ) {
-          this.errors = this.errors.filter( ( error:any,i:number ) => {
-            return i != removeI;
-          });
         },
         login( user: AuthUser, onSuccess: Function ) {
           api.post('/login', {
@@ -36,10 +24,10 @@ export const userStore = defineStore('user', {
                 
                 var cached_route = this.getUnsuccessfullyAccessedRoute;
                 if (cached_route) {
-                    this.setUnsuccessfullyAccessedRoute( null );
-                    onSuccess( cached_route )
+                  this.setUnsuccessfullyAccessedRoute( null );
+                  onSuccess( cached_route )
                 } else {
-                    onSuccess({ 'name' : 'home' });
+                  onSuccess({ 'name' : 'home' });
                 }
             },
           });
@@ -52,7 +40,7 @@ export const userStore = defineStore('user', {
                 onSuccess();
               }
             }, 
-            data : { resetTest }
+            data : { resetTest },
           })
         },
         register( user: RegisterUser, onSuccess: Function ) {
@@ -69,17 +57,11 @@ export const userStore = defineStore('user', {
         }
     },
     getters : {
-        getUser : ( state ) : User|null => {
+        getUser : ( state:any ) : User|null => {
             return ( JSON.stringify( state.user ) === '{}' ? null : state.user );
         },
-        getUnsuccessfullyAccessedRoute : ( state ) : string|null => {
+        getUnsuccessfullyAccessedRoute : ( state:any ) : string|null => {
             return state.unsuccessfullyAccessedRoute;
-        },
-        getLoading(state) : ELoading {
-            return state.loading;
-        },
-        getErrors(state) : any[] {
-          return this.errors;
         }
     },
     persist: {

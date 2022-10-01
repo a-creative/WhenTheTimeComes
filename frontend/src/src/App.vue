@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import { RouteRecordRaw, useRouter } from 'vue-router'
-import { userStore } from './stores/userStore';
+import { useRouter } from 'vue-router'
+import { getAuthStore } from './stores/authStore';
 import { useI18n } from "vue-i18n";
 
 
-const store = userStore();
+const authStore = getAuthStore();
 const { t } = useI18n({ inheritLocale: true });
 
 const appTitle = ref<string>(t('title'));
@@ -54,10 +54,10 @@ const getMainRoutes = () => {
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/login" v-if="!store.getUser && !isLoginPage">{{ t('Login') }}
+            <router-link class="nav-link" to="/login" v-if="!authStore.getUser && !isLoginPage">{{ t('Login') }}
             </router-link>
-            <a href="/logout" class="nav-link" v-if="store.getUser" id="logoutBtn">
-              {{ t('Logout') }} (<span id="usernameLoggedIn">{{ store.getUser.name }}</span>)
+            <a href="/logout" class="nav-link" v-if="authStore.getUser" id="logoutBtn">
+              {{ t('Logout') }} (<span id="usernameLoggedIn">{{ authStore.getUser.name }}</span>)
             </a>
           </li>
         </ul>

@@ -5,9 +5,7 @@ import RegisterView from "@/views/auth/RegisterView.vue";
 import LoginView from "@/views/auth/LoginView.vue";
 import ResetTestView from "@/views/auth/ResetTestView.vue";
 
-
-import axios from 'axios';
-import { userStore } from '@/stores/userStore';
+import { getAuthStore } from '@/stores/authStore';
 
 let mainMenuRoutes: RouteRecordRaw[] = []
 
@@ -68,7 +66,7 @@ const router = createRouter({
 
 router.beforeEach((to, from,next) => {
 
-  const uStore = userStore();
+  const authStore = getAuthStore();
 
   const publicPages = ['/login','/register','/resetTest'];
   const authRequired = !publicPages.includes(to.path);
@@ -76,12 +74,13 @@ router.beforeEach((to, from,next) => {
 
     if ( to.path === '/logout' ) {
 
-      uStore.logout(() => {
+      authStore.logout(() => {
         router.push({ 'name' : 'login' });
       })
 
-    } else if ( !uStore.getUser ) {
-      uStore.setUnsuccessfullyAccessedRoute( to.path );
+    } else if ( !authStore.getUser ) {
+
+      authStore.setUnsuccessfullyAccessedRoute( to.path );
       next({ 'name' : 'login' } );
     } else {
       next();

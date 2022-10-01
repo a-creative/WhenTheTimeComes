@@ -8,9 +8,9 @@
     import FormO from '@/@acreative/vue/bootstrap/Form.vue';
     import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/@acreative/vue/modules/vue-form"
 
-    import { userStore } from '@/stores/userStore';
+    import { getAuthStore } from '@/stores/authStore';
 
-    const authStore = userStore();
+    const authStore = getAuthStore();
 
     const router = useRouter();
 

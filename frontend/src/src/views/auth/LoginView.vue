@@ -6,22 +6,16 @@
     
     import FormO from '@/@acreative/vue/bootstrap/Form.vue';
     import { FieldDef, FieldType, ActionDef, ActionType, ActionStyle, ActionLocation } from "@/@acreative/vue/modules/vue-form"
+    import { ELoading } from '@/@acreative/vue/modules/vue-api';
+    import { getAuthStore } from '@/stores/authStore';
 
-    import { userStore } from '@/stores/userStore';
-
-    const authStore = userStore();
+    const authStore = getAuthStore();
+    const router = useRouter();
 
     interface FormInput {
         username: string,
         password: string,
     };
-
-    enum ELoading {
-        idle,
-        loading,
-        loaded,
-        failed,
-    }
     
     const { t } = useI18n({ inheritLocale: true });
 
@@ -32,7 +26,7 @@
         password: 'test1234',
     });
 
-    const router = useRouter();
+    
     const login = () => {
         authStore.login( formInput.value, ( forwardToRoute:RouteLocation ) => {
             router.push( forwardToRoute )

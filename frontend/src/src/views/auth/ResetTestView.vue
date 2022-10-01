@@ -1,14 +1,14 @@
 <script lang="ts" setup>
   import { ref, onMounted, onUpdated} from 'vue';
-  import { userStore } from "@/stores/userStore";
+  import { getAuthStore } from "@/stores/authStore";
 
-  const uStore = userStore();
+  const authStore = getAuthStore();
 
   const testReset = ref('no')
 
   onMounted(() => {
 
-    uStore.resetTest(( ok:boolean ) => {
+    authStore.resetTest(( ok:boolean ) => {
       testReset.value = ( ok ? 'no' : 'yes')
     });
 
