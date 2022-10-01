@@ -2,31 +2,28 @@
 
 namespace App\Http\Responses;
 
-use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
 use App\User;
 
 class LogoutResponse implements LogoutResponseContract
 {
-
     /**
-     * @param  $request
-     * @return mixed
+     * Create an HTTP response that represents the object.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function toResponse($request)
     {
-        $reset =  false;
-        if ( $request->input('resetTest') === true ) {
+        $reset =  $request->input('resetTest');
+        if ( $reset ) {
             User::where('username', 'cy_email@test.dk')->delete();
-            $reset = true;
         }
-        return $request->wantsJson()
-            ? response()->json([
-                'status'=>true,
-                'reset' =>$reset,
-                'message' => 'Logout successfully',
-            ], 200)
-            : redirect('/');
-    }
 
+        return response()->json([
+            'status'=>true,
+            'reset' =>$reset,
+            'message' => 'Logout successfully',
+        ], 200);
+    }
 }
