@@ -16,7 +16,7 @@ class CreateItemTypePlansTable extends Migration
     {
         Schema::create('item_type_plans', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('typeId');
+            $table->enum('type',['fixed','variable']);
             $table->json('typeOptions');
             $table->foreignIdFor(ItemType::class);
         });
