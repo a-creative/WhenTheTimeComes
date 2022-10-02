@@ -6,8 +6,21 @@ import LoginView from "@/views/auth/LoginView.vue";
 import ResetTestView from "@/views/auth/ResetTestView.vue";
 
 import { getAuthStore } from '@/stores/authStore';
+import CurrencyCreateEditView from "@/views/currency/CurrencyCreateEditView.vue";
+import CurrencyIndexView from "@/views/currency/CurrencyIndexView.vue"
 
-let mainMenuRoutes: RouteRecordRaw[] = []
+let mainMenuRoutes: RouteRecordRaw[] = [
+  {
+    path: "/currency/create",
+    name: 'currencyCreate',
+    component: CurrencyCreateEditView,
+  },
+  {
+    path: "/currency/index",
+    name: 'currencyIndex',
+    component: CurrencyIndexView,
+  }
+]
 
 const routes: RouteRecordRaw[] = [
   {
@@ -29,6 +42,11 @@ const routes: RouteRecordRaw[] = [
     path: "/resetTest",
     name: "resetTest",
     component: ResetTestView
+  },
+  {
+    path: "/currency/:id/edit",
+    name: 'editCurrency',
+    component: CurrencyCreateEditView,
   }
 ];
 

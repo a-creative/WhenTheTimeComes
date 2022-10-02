@@ -76,6 +76,9 @@ const getMainRoutes = () => {
     "Log ud": "Log ud",
     "route": {
       "title": {
+        "currencyCreate" : "Opret valuta",
+        "currencyEdit" : "Rediger valuta",
+        "currencyIndex" : "Valutaoversigt"
       }
     }
   },
