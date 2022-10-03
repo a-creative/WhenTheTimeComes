@@ -15,7 +15,7 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Currency::orderBy('unit')->get());
     }
 
     /**
