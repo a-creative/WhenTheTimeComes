@@ -8,6 +8,8 @@ import { ColumnDef } from "@tanstack/table-core";
 import { Currency } from "@/types/currency";
   const { t } = useI18n({ inheritLocale: true });
 
+  const currFormatter = new Intl.NumberFormat();
+
   const columns: ColumnDef<Currency>[] = [
     {
       accessorKey : "unit",
@@ -15,7 +17,10 @@ import { Currency } from "@/types/currency";
     }, 
     {
       accessorKey : "exchRateDkk",
-      header: t('column.exchRateDkk')
+      header: t('column.exchRateDkk'),
+      cell: ( cell ) => {
+        return currFormatter.format(cell.getValue() as number);
+      }
     }
   ];
 
