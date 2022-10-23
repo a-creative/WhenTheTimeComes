@@ -2,18 +2,14 @@ FROM php:7.4.30-apache
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# BEGIN Prepare access rights for the host system
 ARG USER_ID
 ARG GROUP_ID
 
-ENV USER_ID=$USER_ID
-ENV GROUP_ID=$GROUP_ID
-ENV USER_ID=${USER_ID:-1001}
-ENV GROUP_ID=${GROUP_ID:-1001}
-
-RUN addgroup --gid ${GROUP_ID} maya
-RUN adduser --disabled-password --gecos '' --uid ${USER_ID} --gid ${GROUP_ID} maya
-
-RUN chown -R maya:maya /var/www/html
+RUN addgroup --gid $GROUP_ID host_group
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID host_user
+USER host_user
+# END Prepare access rights for the host system
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends apt-utils; \
