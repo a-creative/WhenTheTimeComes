@@ -1,2 +1,2 @@
 #! /bin/sh
-docker-compose exec -u maya:maya backend bash
+docker-compose exec -u $USER:$USER backend bash
