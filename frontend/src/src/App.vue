@@ -9,6 +9,9 @@ import { useI18n } from "vue-i18n";
 const authStore = getAuthStore();
 const { t } = useI18n({ inheritLocale: true });
 
+
+window.appTitle = t('title');
+
 const appTitle = ref<string>(t('title'));
 
 function isLoginPage() {
