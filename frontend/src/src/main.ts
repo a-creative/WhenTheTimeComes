@@ -12,7 +12,7 @@ import FontAwesomeIcon from "@/utils/fontawesome-icons";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-axios.defaults.baseURL = 'http://localhost:7022';
+axios.defaults.baseURL = 'http://localhost:7032';
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(

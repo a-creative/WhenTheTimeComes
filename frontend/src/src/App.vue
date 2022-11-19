@@ -71,7 +71,7 @@ const getMainRoutes = () => {
 
 <i18n lang="json">{
   "da": {
-    "title" : "mitBudget",
+    "title" : "Når tiden kommer",
     "Login": "Log ind",
     "Log ud": "Log ud",
     "route": {

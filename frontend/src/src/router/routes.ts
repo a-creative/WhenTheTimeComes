@@ -7,7 +7,7 @@ import ResetTestView from "@/views/auth/ResetTestView.vue";
 
 import { getAuthStore } from '@/stores/authStore';
 import CurrencyCreateEditView from "@/views/currency/CurrencyCreateEditView.vue";
-import CurrencyIndexView from "@/views/currency/CurrencyIndexView.vue"
+import AreaExploreView from "@/views/area/AreaExploreView.vue"
 
 let mainMenuRoutes: RouteRecordRaw[] = [
   {
@@ -44,9 +44,9 @@ const routes: RouteRecordRaw[] = [
     component: ResetTestView
   },
   {
-    path: "/currency/:id/edit",
-    name: 'editCurrency',
-    component: CurrencyCreateEditView,
+    path: "/area/:id/explore",
+    name: 'exploreArea',
+    component: AreaExploreView,
   }
 ];
 

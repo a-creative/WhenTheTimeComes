@@ -10,7 +10,7 @@ export default defineConfig({
     // <-- this object is added
     port: 3000,
     hmr: {
-      clientPort: 7021,
+      clientPort: 7031,
     },
   },
   resolve:{
