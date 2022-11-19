@@ -1,3 +1,3 @@
 [submodule "@acreative-vue"]
 	path = frontend/src/src/@acreative/vue
-	url = ./frontend/src/src/@acreative/vue
+	url = https://github.com/a-creative/vue-shared
