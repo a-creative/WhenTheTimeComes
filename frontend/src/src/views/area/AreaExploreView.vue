@@ -8,6 +8,7 @@
   import Rock from "@/views/area/obstacles/RockObstacle.vue";
   import Source from "@/views/area/specials/Source.vue";
   import Player from "@/views/area/specials/Player.vue";
+  import { Direction } from '@/types/area';
   
   const { t } = useI18n({ inheritLocale: true });
 
@@ -53,6 +54,9 @@
     type: 'wood'
   }
 
+  const movePlayer = (direction: Direction) => {
+    console.log('The player is moved:' + direction)
+  }
 
 </script>
 <template>
@@ -63,7 +67,7 @@
           <div class="plot">
             <Wood v-if="plot.type === 'wood'" />
             <Rock v-if="plot.type === 'rock'" />
-            <Player v-if="plot.type === 'player'" />
+            <Player v-if="plot.type === 'player'" v-on:move="movePlayer" />
             <Source v-if="plot.type === 'source'" />
           </div>
         </div>
