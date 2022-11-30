@@ -3,9 +3,13 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import { useI18n } from "vue-i18n";
   import Sprite from "@/views/area/Sprite.vue";
-  import { Direction } from '@/types/area';
+  import { Direction, Plot} from '@/types/area';
   const { t } = useI18n({ inheritLocale: true });
 
+  interface Props {
+		plot: Plot;
+	}
+	const props = withDefaults(defineProps<Props>(), {});
 
 	const x = ref(0);
 	const y = ref(0);
@@ -53,6 +57,7 @@
   <div :style="'position:relative; left: ' + x + 'px; top: ' + y + 'px'">
     <Sprite 
       tileSet="P"
+      :tileSetSize="plot.contentSize"
     />
   </div>
 </template>

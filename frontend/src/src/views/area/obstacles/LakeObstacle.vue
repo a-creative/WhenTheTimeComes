@@ -6,16 +6,16 @@
   import { Plot} from '@/types/area';
   const { t } = useI18n({ inheritLocale: true });
 
-interface Props {
-  plot: Plot;
-}
-const props = withDefaults(defineProps<Props>(), {});
+  interface Props {
+    plot: Plot;
+  }
+  const props = withDefaults(defineProps<Props>(), {});
 
 </script>
 <template>
   <Sprite
     isObstacle
-    tileSet="R"
+    tileSet="L"
     :tileSetSize="plot.contentSize"
   />
 </template>

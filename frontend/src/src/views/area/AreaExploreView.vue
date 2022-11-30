@@ -6,9 +6,11 @@
   import { ELoading } from "@/@acreative/vue/modules/vue-api";
   import Wood from "@/views/area/collectibles/WoodCollectible.vue";
   import Rock from "@/views/area/obstacles/RockObstacle.vue";
+  import Lake from "@/views/area/obstacles/LakeObstacle.vue";
   import Source from "@/views/area/specials/Source.vue";
   import Player from "@/views/area/specials/Player.vue";
-  import { Direction } from '@/types/area';
+  import { Direction, Plot } from '@/types/area';
+  
   
   const { t } = useI18n({ inheritLocale: true });
 
@@ -17,42 +19,47 @@
   
   const loading = ref<ELoading>(ELoading.idle)
 
-  const plots:any[] = [];
-  for ( let row_i = 1; row_i <= 20; row_i++ ) {
-    let row:any = [];
-    
-    for ( let col_i = 1; col_i <= 20; col_i++ ) {
-      let x:number = (col_i-1) * 20;
-      let y:number = (row_i-1) * 20;
-      let col:any = {};
+  // Set the grounds for our area
+  const plots = ref<Plot[][]>([]);
 
-      row.push(col);
+  // Init. the grounds with empty plots
+  for ( let x = 1; x <= 20; x++ ) {
+    let rowOfPlots:Array<Plot> = [];
+    
+    for ( let y = 1; y <= 20; y++ ) {
+      let plot:Plot = new Plot(x,y);
+      rowOfPlots.push(plot);
     }
 
-    plots.push(row)
-
+    plots.value.push(rowOfPlots)
   }
 
-  plots[0][0] = {
-    type: 'player'
+  const initContent = () => {
+
+    // map
+
+    // Add some test content
+    plots.value[0][0].contentType = 'player'
+    plots.value[10][10].contentType = 'source';
+
+    plots.value[16][16].contentType = 'rock';
+    plots.value[16][16].contentSize = 2;
+
+    plots.value[12][4].contentType = 'lake';
+    plots.value[12][4].contentSize = [
+      ' XXX ',
+      'XXXXX',
+      'XXXXX',
+      ' XXXX',
+      '  XX '
+    ];
+
+    plots.value[2][2].contentType = 'wood';
+    plots.value[4][16].contentType = 'wood';
+    
   }
 
-  plots[10][10] = {
-    type: 'source'
-  }
-
-  plots[14][4] = {
-    type: 'rock',
-    size: '2x2'
-  }
-
-  plots[3][3] = {
-    type: 'wood'
-  }
-
-  plots[4][16] = {
-    type: 'wood'
-  }
+  initContent();
 
   const movePlayer = (direction: Direction) => {
     console.log('The player is moved:' + direction)
@@ -65,10 +72,11 @@
       <div class="plot-row" v-for="row in plots">
         <div class="plot-col" v-for="plot in row">
           <div class="plot">
-            <Wood v-if="plot.type === 'wood'" />
-            <Rock v-if="plot.type === 'rock'" />
-            <Player v-if="plot.type === 'player'" v-on:move="movePlayer" />
-            <Source v-if="plot.type === 'source'" />
+            <Lake v-if="plot.contentType === 'lake'" :plot="plot" />
+            <Wood v-if="plot.contentType === 'wood'" :plot="plot" />
+            <Rock v-if="plot.contentType === 'rock'" :plot="plot" />
+            <Player v-if="plot.contentType === 'player'" :plot="plot"  v-on:move="movePlayer" />
+            <Source v-if="plot.contentType === 'source'" :plot="plot" />
           </div>
         </div>
       </div>
